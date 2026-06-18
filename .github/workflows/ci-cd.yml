@@ -91,15 +91,18 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Converter nome do repositório para minúsculo
+        run: echo "REPO_LOWER=$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+
       - name: Build & Push Microserviço 1
         uses: docker/build-push-action@v3
         with:
           context: ./microservico1
           file: ./microservico1/dockerfile
           push: true
-          tags: | 
-            ghcr.io/${{ github.repository }}/microservico1:latest
-            ghcr.io/${{ github.repository }}/microservico1:${{ github.sha }}
+          tags: |
+            ghcr.io/${{ env.REPO_LOWER }}/microservico1:latest
+            ghcr.io/${{ env.REPO_LOWER }}/microservico1:${{ github.sha }}
 
       - name: Build & Push Microserviço 2
         uses: docker/build-push-action@v3
@@ -108,8 +111,8 @@ jobs:
           file: ./microservico2/dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}/microservico2:latest
-            ghcr.io/${{ github.repository }}/microservico2:${{ github.sha }}
+            ghcr.io/${{ env.REPO_LOWER }}/microservico2:latest
+            ghcr.io/${{ env.REPO_LOWER }}/microservico2:${{ github.sha }}
 
   deploy-staging:
     name: Deploy to Staging (Github local)
