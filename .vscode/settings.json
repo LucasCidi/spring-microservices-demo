@@ -3,5 +3,6 @@
     "sonarlint.connectedMode.project": {
         "connectionId": "sonarqube-local",
         "projectKey": "Microservico2"
-    }
+    },
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
