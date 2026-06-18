@@ -32,6 +32,22 @@ jobs: # O que ela faz (cada job roda numa VM separada)
   build-microservice1:
     runs-on: ubuntu-latest
     needs: build-commons
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: mysecretpassword
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries
+
     steps:
       - uses: actions/checkout@v4
 
