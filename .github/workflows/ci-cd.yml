@@ -2,9 +2,9 @@ name: CI/CD pipeline
 
 on: # QUANDO ela executa
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
 
 jobs: # O que ela faz (cada job roda numa VM separada)
   build-commons:
