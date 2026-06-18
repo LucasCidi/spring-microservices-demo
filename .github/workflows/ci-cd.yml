@@ -40,7 +40,7 @@ jobs:
       - name: Compilar e testar o 'microservico2'
         run: |
           cd microservico2
-          mvn clean test
+          mvn clean verify
 
       - name: Upload dos relatórios de teste (JaCoCo)
         if: always()
