@@ -15,6 +15,7 @@ public class CitationCollection {
         citations.add("Vulnerability sounds like faith and looks like courage.");
         citations.add("Each time you break your own boundaries to ensure that someone else likes you, you like yourself a little less.");
         citations.add("There is nothing stronger than a broken person who has rebuilt him/herself.");
+        citations.add("Revenge is never complete; it kills the soul and poisons it.");
     }
 
     public String getCitation() {
